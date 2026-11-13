@@ -1,17 +1,7 @@
 # my_first_app
 
-A new Flutter project.
+## What I learned and what blocked me
+I learned how to create a Flutter app, run it, and use hot reload and hot restart. Hot reload keeps the state, hot restart re-runs main(). I used debugPrint to read the screen width (1026 dp in the browser). The Android SDK was not installed on my PC, so I ran the app in the browser (Edge/Chrome) instead of an Android device. I also lost time because I was editing a main.dart in the wrong folder, so my changes did not show.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![App](docs/app.png)
+![flutter doctor](docs/doctor.png)
