@@ -11,7 +11,7 @@ class CardApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
       ),
-      home: const CourseList(),
+      home: const OverflowDemo(),
     );
   }
 }
@@ -95,6 +95,28 @@ class CourseList extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class OverflowDemo extends StatelessWidget {
+  const OverflowDemo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Overflow demo')),
+      body: const Row(
+        children: [
+          Expanded(
+            child: Text(
+              'A very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very long title for one line',
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Icon(Icons.star),
+        ],
       ),
     );
   }
