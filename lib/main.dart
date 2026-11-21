@@ -11,7 +11,7 @@ class CardApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
       ),
-      home: const OverflowDemo(),
+      home: const CourseList(),
     );
   }
 }
