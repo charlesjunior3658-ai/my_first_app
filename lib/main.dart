@@ -11,18 +11,8 @@ class CardApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
       ),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Profile')),
-        body: const Padding(
-          padding: EdgeInsets.all(16),
-        child: ProfileCard(
-          name: 'Tene Charles',
-          role: 'Computer Science student, ICTU',
-          phone: '+237 6 00 00 00 00',
-),
-          ),
-        ),
-      );
+      home: const CourseList(),
+    );
   }
 }
 
@@ -67,6 +57,44 @@ class ProfileCard extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class Course {
+  const Course(this.name, this.detail);
+
+  final String name;
+  final String detail;
+}
+
+class CourseList extends StatelessWidget {
+  const CourseList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    const courses = [
+      Course('Database Management', 'Level 3'),
+      Course('CCNA 1', 'Networking'),
+      Course('Cybersecurity', 'Layers 1 and 2'),
+    ];
+
+    return Scaffold(
+      appBar: AppBar(title: const Text('My courses')),
+      body: ListView.builder(
+        padding: const EdgeInsets.all(16),
+        itemCount: courses.length,
+        itemBuilder: (context, index) {
+          final c = courses[index];
+          return Card(
+            child: ListTile(
+              leading: const CircleAvatar(child: Icon(Icons.school)),
+              title: Text(c.name),
+              subtitle: Text(c.detail),
+            ),
+          );
+        },
       ),
     );
   }
