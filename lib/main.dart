@@ -1,66 +1,72 @@
 import 'package:material_ui/material_ui.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const CardApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class CardApp extends StatelessWidget {
+  const CardApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Profile')),
+        body: const Padding(
+          padding: EdgeInsets.all(16),
+        child: ProfileCard(
+          name: 'Tene Charles',
+          role: 'Computer Science student, ICTU',
+          phone: '+237 6 00 00 00 00',
+),
+          ),
+        ),
+      );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+class ProfileCard extends StatelessWidget {
+  const ProfileCard({
+    super.key,
+    required this.name,
+    required this.role,
+    required this.phone,
+  });
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  final String name;
+  final String role;
+  final String phone;
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('Width: ${MediaQuery.of(context).size.width} dp');
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('Hello, Charles'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+    final textTheme = Theme.of(context).textTheme;
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Row(
+          children: [
+            const CircleAvatar(radius: 32, child: Icon(Icons.person, size: 32)),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(name, style: textTheme.titleLarge),
+                  Text(role),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      const Icon(Icons.phone, size: 16),
+                      const SizedBox(width: 4),
+                      Text(phone),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            const Text('My second text'),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
